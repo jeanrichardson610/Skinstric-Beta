@@ -9,16 +9,10 @@ function Nav() {
 
   // Determine the text based on the route
   let introText = "INTRO";
-  if (
-    location.pathname !== "/results" &&
-    location.pathname !== "/demographics" &&
-    location.pathname !== "/"
-  ) {
-    introText = "INTRO";
-  } else if (location.pathname === "/results") {
+ if (["/results", "/demographics"].includes(location.pathname)) {
     introText = "ANALYSIS";
-  } else if (location.pathname === "/demographics") {
-    introText = "ANALYSIS"; // or whatever text you want
+  } else if (location.pathname !== "/") {
+    introText = "INTRO";
   }
 
   return (
