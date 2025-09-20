@@ -5,9 +5,14 @@ import right_bracket from "../Assets/Rectangle 2711.png";
 import { useLocation } from "react-router-dom";
 
 function Nav() {
-
   const location = useLocation();
-  
+
+  // Decide what text to show
+  let navText = "INTRO";
+  if (location.pathname === "/results" || location.pathname === "/demographics") {
+    navText = "ANALYSIS";
+  }
+
   return (
     <div className="nav__row">
       <div className="nav__logo">
@@ -16,7 +21,7 @@ function Nav() {
         </a>
         <div className="intro__wrapper">
           <img src={left_bracket} alt="" className="bracket" />
-          <p>INTRO</p>
+          <p>{navText}</p>
           <img src={right_bracket} alt="" className="bracket" />
         </div>
       </div>
