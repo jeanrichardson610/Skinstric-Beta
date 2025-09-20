@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Nav.css";
 import left_bracket from "../Assets/Rectangle 2710.png";
 import right_bracket from "../Assets/Rectangle 2711.png";
@@ -6,12 +6,15 @@ import { useLocation } from "react-router-dom";
 
 function Nav() {
   const location = useLocation();
+  const [navText, setNavText] = useState("INTRO");
 
-  // Decide what text to show
-  let navText = "INTRO";
-  if (location.pathname === "/results" || location.pathname === "/demographics") {
-    navText = "ANALYSIS";
-  }
+  useEffect(() => {
+    if (location.pathname === "/results" || location.pathname === "/demographics") {
+      setNavText("ANALYSIS");
+    } else {
+      setNavText("INTRO");
+    }
+  }, [location]);
 
   return (
     <div className="nav__row">
@@ -25,7 +28,6 @@ function Nav() {
           <img src={right_bracket} alt="" className="bracket" />
         </div>
       </div>
-      {/* Only show button on home page */}
       {location.pathname === "/" && (
         <button className="nav__btn">ENTER CODE</button>
       )}
