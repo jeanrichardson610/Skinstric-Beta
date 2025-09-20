@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Analysis.css";
-import Nav from "../Components/Nav";
+import Nav2 from "../Components/Nav2";
 import Big_Square from "../Assets/Rectangle 2780.png";
 import Medium_Square from "../Assets/Rectangle 2779.png";
 import Small_Square from "../Assets/Rectangle 2778.png";
@@ -35,7 +35,7 @@ function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPrevi
 
   return (
     <>
-      <Nav />
+      <Nav2 />
 
       <div className={`analysis__wrapper ${cameraLoading ? "fade-out" : ""}`}>
         <div className="page__direction">
