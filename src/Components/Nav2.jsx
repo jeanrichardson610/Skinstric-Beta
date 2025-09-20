@@ -1,5 +1,5 @@
 import React from "react";
-import "./Nav.css";
+import "./Nav2.css";
 import left_bracket from "../Assets/Rectangle 2710.png";
 import right_bracket from "../Assets/Rectangle 2711.png";
 import { useLocation, Link } from "react-router-dom";
