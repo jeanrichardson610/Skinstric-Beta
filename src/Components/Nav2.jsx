@@ -8,22 +8,22 @@ function Nav2() {
   const location = useLocation();
 
   return (
-    <div className="nav__row">
-      <div className="nav__logo">
-        <Link to="/" className="logo__btn">
+    <div className="nav2__row">
+      <div className="nav2__logo">
+        <Link to="/" className="nav2__logo__btn">
           SKINSTRIC
         </Link>
-        <div className="intro__wrapper">
-          <img src={left_bracket} alt="" className="bracket" />
+        <div className="nav2__intro__wrapper">
+          <img src={left_bracket} alt="" className="nav2__bracket" />
           <p>
            ANALYSIS
           </p>
-          <img src={right_bracket} alt="" className="bracket" />
+          <img src={right_bracket} alt="" className="nav2__bracket" />
         </div>
       </div>
 
       {location.pathname === "/" && (
-        <button className="nav__btn">ENTER CODE</button>
+        <button className="nav2__btn">ENTER CODE</button>
       )}
     </div>
   );
