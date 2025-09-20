@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Demographics.css";
-import Nav from "../Components/Nav";
+import Nav2 from "../Components/Nav2";
 import radio_button from "../Assets/radio-button.png";
 import radio_button_black from "../Assets/radio-button (1).png";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
@@ -109,7 +109,7 @@ function Demographics({ demoData }) {
   if (!demoData || Object.keys(demoData).length === 0) {
     return (
       <>
-        <Nav />
+        <Nav2 />
         <div className="demo">
           <div className="demo__wrapper">
             <div className="demo__title">
@@ -150,7 +150,7 @@ function Demographics({ demoData }) {
 
   return (
     <>
-      <Nav />
+      <Nav2 />
       <div className="demo">
         <div className="demo__wrapper">
           <div className="demo__title">
