@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Results.css";
-import Nav2 from "../Components/Nav2";
+import Nav from "../Components/Nav";
 
 import Small_Square from "../Assets/Rectangle 2778.png";
 import { Link } from "react-router-dom";
@@ -14,7 +14,7 @@ function Results() {
   const [biggerOpacity, setBiggerOpacity] = useState("");
   return (
     <>
-      <Nav2 />
+      <Nav />
       <div className="results">
         <div className="results__title">A.I. ANALYSIS</div>
         <div className="results__description">

@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import "./App.css";
 import Home from "./Pages/Home";
 import AOS from "aos";
@@ -8,10 +8,9 @@ import Analysis from "./Pages/Analysis";
 import Results from "./Pages/Results";
 import Demographics from "./Pages/Demographics";
 import Camera from "./Pages/Camera";
-import Nav from "./Components/Nav";
-import Nav2 from "./Components/Nav2";
 import { useState, useCallback } from "react";
 import axios from "axios";
+
 
 AOS.init({
   disable: false,
@@ -36,7 +35,6 @@ function App() {
   });
 
   const navigate = useNavigate();
-  const location = useLocation(); // <-- get current path
 
   const convertFileToBase64 = useCallback((file) => {
     return new Promise((resolve, reject) => {
@@ -47,6 +45,7 @@ function App() {
     });
   }, []);
 
+  // Helper to add a minimum delay
   const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
   const uploadImage = useCallback(async () => {
@@ -56,13 +55,14 @@ function App() {
     try {
       const base64Data = preview.split(",")[1];
 
+      // Run API request and delay simultaneously
       const [response] = await Promise.all([
         axios.post(
           "https://us-central1-api-skinstric-ai.cloudfunctions.net/skinstricPhaseTwo",
           { image: base64Data },
           { headers: { "Content-Type": "application/json" } }
         ),
-        delay(2000),
+        delay(2000), // Minimum 2 seconds loading
       ]);
 
       setDemoData(response.data.data);
@@ -79,18 +79,8 @@ function App() {
     }
   }, [preview, navigate]);
 
-  // Decide which Nav to show based on route
-  const renderNav = () => {
-    if (location.pathname === "/" || location.pathname === "/intro") {
-      return <Nav />;
-    } else {
-      return <Nav2 />;
-    }
-  };
-
   return (
     <div className="App">
-      {renderNav()} {/* Nav or Nav2 rendered dynamically */}
       <Routes>
         <Route index element={<Home />} />
         <Route path="/intro" element={<Intro />} />

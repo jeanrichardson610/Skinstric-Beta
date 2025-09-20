@@ -7,6 +7,14 @@ import { useLocation, Link } from "react-router-dom";
 function Nav() {
   const location = useLocation();
 
+  // Determine the text based on the route
+  let introText = null;
+  if (location.pathname !== "/results" && location.pathname !== "/demographics" && location.pathname !== "/") {
+    introText = "INTRO";
+  } else if (location.pathname === "/results" || location.pathname === "/demographics") {
+    introText = "ANALYSIS";
+  }
+
   return (
     <div className="nav__row">
       <div className="nav__logo">
@@ -15,12 +23,7 @@ function Nav() {
         </Link>
         <div className="intro__wrapper">
           <img src={left_bracket} alt="" className="bracket" />
-          <p>
-            {location.pathname === "/results" ||
-            location.pathname === "/demographics"
-              ? "ANALYSIS"
-              : "INTRO"}
-          </p>
+          {introText && <p>{introText}</p>}
           <img src={right_bracket} alt="" className="bracket" />
         </div>
       </div>
