@@ -10,7 +10,7 @@ import Demographics from "./Pages/Demographics";
 import Camera from "./Pages/Camera";
 import { useState, useCallback } from "react";
 import axios from "axios";
-import Layout from "./Components/Layout";
+
 
 AOS.init({
   disable: false,
@@ -82,42 +82,33 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route index element={<Home />} />
+        <Route path="/intro" element={<Intro />} />
         <Route
-          path="*"
+          path="/analysis"
           element={
-            <Layout>
-              <Routes>
-                <Route index element={<Home />} />
-                <Route path="/intro" element={<Intro />} />
-                <Route
-                  path="/analysis"
-                  element={
-                    <Analysis
-                      convertFileToBase64={convertFileToBase64}
-                      setPreview={setPreview}
-                      preview={preview}
-                      loading={loading}
-                      uploadImage={uploadImage}
-                    />
-                  }
-                />
-                <Route path="/results" element={<Results />} />
-                <Route
-                  path="/demographics"
-                  element={<Demographics demoData={demoData} />}
-                />
-                <Route
-                  path="/camera"
-                  element={
-                    <Camera
-                      setPreview={setPreview}
-                      preview={preview}
-                      uploadImage={uploadImage}
-                    />
-                  }
-                />
-              </Routes>
-            </Layout>
+            <Analysis
+              convertFileToBase64={convertFileToBase64}
+              setPreview={setPreview}
+              preview={preview}
+              loading={loading}
+              uploadImage={uploadImage}
+            />
+          }
+        />
+        <Route path="/results" element={<Results />} />
+        <Route
+          path="/demographics"
+          element={<Demographics demoData={demoData} />}
+        />
+        <Route
+          path="/camera"
+          element={
+            <Camera
+              setPreview={setPreview}
+              preview={preview}
+              uploadImage={uploadImage}
+            />
           }
         />
       </Routes>

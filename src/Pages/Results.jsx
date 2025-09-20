@@ -131,18 +131,18 @@ function Results() {
         />
       </div>
       <div className="intro__btns">
-        <a href="/analysis">
+        <Link to="/analysis">
           <div className="back__btn">
             <div className="back__btn--border"></div>
             <div className="back__btn--triangle">▶{"\uFE0E"}</div>
             <div className="back__btn--title">BACK</div>
           </div>
-        </a>
-        <a href="/demographics" className="get__summary--btn">
+        </Link>
+        <Link to="/demographics" className="get__summary--btn">
           <div className="proceed__btn--title">GET SUMMARY</div>
           <div className="proceed__btn--border"></div>
           <div className="proceed__btn--triangle">▶{"\uFE0E"}</div>
-        </a>
+        </Link>
       </div>
     </>
   );
