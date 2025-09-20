@@ -467,7 +467,7 @@ function Demographics({ demoData }) {
             </div>
           </div>
           <div className="demo__btns">
-            <a href="/results">
+            <Link to="/results">
               <div className="back__btn--small">
                 <p>BACK</p>
               </div>
@@ -476,7 +476,7 @@ function Demographics({ demoData }) {
                 <div className="back__btn--triangle">▶{"\uFE0E"}</div>
                 <div className="back__btn--title">BACK</div>
               </div>
-            </a>
+            </Link>
             <div className="demo__btn2">
             <button className="reset__btn">RESET</button>
             <button className="confirm__btn">CONFIRM</button>
