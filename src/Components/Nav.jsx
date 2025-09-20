@@ -8,10 +8,10 @@ function Nav() {
   const location = useLocation();
 
   // Determine the text based on the route
-  let introText = null;
+  let introText = "INTRO";
   if (location.pathname !== "/results" && location.pathname !== "/demographics" && location.pathname !== "/") {
     introText = "INTRO";
-  } else if (location.pathname === "/results" || location.pathname === "/demographics") {
+  } else if (location.pathname === "/results" ) {
     introText = "ANALYSIS";
   }
 
