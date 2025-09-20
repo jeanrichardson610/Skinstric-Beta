@@ -9,30 +9,19 @@ import gallery_icon from "../Assets/gallery-icon.png";
 import line from "../Assets/Group 39690.png";
 import { useNavigate } from "react-router-dom";
 
-function Analysis({
-  convertFileToBase64,
-  loading,
-  preview,
-  uploadImage,
-  setPreview,
-}) {
-  const [visible, setVisible] = useState('none')
+function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPreview }) {
+  const [visible, setVisible] = useState("none");
+  const [cameraLoading, setCameraLoading] = useState(false);
   const galleryInputRef = useRef(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleGalleryClick = () => {
-    galleryInputRef.current.click();
-  };
-
+  const handleGalleryClick = () => galleryInputRef.current.click();
 
   const handleFileSelect = async (e) => {
     const file = e.target.files[0];
-
     if (!file) return;
-
     try {
       const base64 = await convertFileToBase64(file);
-
       setPreview(base64);
     } catch {
       console.error("Error converting file");
@@ -41,25 +30,24 @@ function Analysis({
 
   useEffect(() => {
     if (!preview) return;
-
     uploadImage();
   }, [preview, uploadImage]);
 
   return (
     <>
       <Nav />
-      <div className="analysis__wrapper">
+
+      <div className={`analysis__wrapper ${cameraLoading ? "fade-out" : ""}`}>
         <div className="page__direction">
           <p>TO START ANALYSIS</p>
         </div>
+
         <div className="picture__wrapper">
           {loading ? (
             <>
               <div className="analysis__loading">
                 <div className="loading__wrapper">
-                  <div className="analysis__loading--title">
-                    PREPARING YOUR ANALYSIS...
-                  </div>
+                  <div className="analysis__loading--title">PREPARING YOUR ANALYSIS...</div>
                   <div className="dots">
                     <div className="dot1"></div>
                     <div className="dot2"></div>
@@ -70,54 +58,44 @@ function Analysis({
                 <img src={Medium_Square} alt="medium square" className="medium__square--loading" />
                 <img src={Small_Square} alt="small square" className="small__square--loading" />
               </div>
+
               <div className="preview">
                 <div className="preview__title">Preview</div>
                 <div className="preview__picture--box">
-                  <img
-                    src={preview || null}
-                    alt=""
-                    className="preview__picture--box-img"
-                  />
+                  <img src={preview || null} alt="" className="preview__picture--box-img" />
                 </div>
               </div>
             </>
           ) : (
             <>
+              {/* Scan Section */}
               <div className="scan">
                 <img src={Big_Square} alt="big square" className="big__square--analysis" />
                 <img src={Medium_Square} alt="medium square" className="medium__square--analysis" />
                 <img src={Small_Square} alt="small square" className="small__square--analysis" />
+
                 <div className="scan__btn--wrapper">
-                  <button
-                    className="scan__btn"
-                    onClick={() => {
-                      setVisible("block");
-                    }}
-                  >
-                    <img src={camera_icon} alt="camera icon"/>
+                  <button className="scan__btn" onClick={() => setVisible("block")}>
+                    <img src={camera_icon} alt="camera icon" />
                     <div className="scan__btn--description">
-                      <p>
-                        ALLOW A.I. <br />
-                        TO SCAN YOUR FACE
-                      </p>
+                      <p>ALLOW A.I. <br /> TO SCAN YOUR FACE</p>
                       <img src={line} alt="" />
                     </div>
                   </button>
+
                   <div className="access__wrapper" style={{ display: visible }}>
                     <h2>ALLOW A.I. TO ACCESS YOUR CAMERA</h2>
                     <div className="access__buttons">
-                      <button
-                        className="deny"
-                        onClick={() => {
-                          setVisible("none");
-                        }}
-                      >
-                        DENY
-                      </button>
+                      <button className="deny" onClick={() => setVisible("none")}>DENY</button>
                       <button
                         className="allow"
                         onClick={() => {
-                          navigate("/camera");
+                          setCameraLoading(true);
+                          setVisible("none");
+
+                          setTimeout(() => {
+                            navigate("/camera");
+                          }, 1000);
                         }}
                       >
                         ALLOW
@@ -126,10 +104,9 @@ function Analysis({
                   </div>
                 </div>
               </div>
+
+              {/* Gallery Section */}
               <div className="gallery">
-                <img src={Big_Square} alt="big square" className="big__square--analysis" />
-                <img src={Medium_Square} alt="medium square"className="medium__square--analysis" />
-                <img src={Small_Square} alt="small square" className="small__square--analysis" />
                 <div className="gallery__btn--wrapper">
                   <button
                     className="gallery__btn"
@@ -139,34 +116,27 @@ function Analysis({
                     }}
                   >
                     <img src={gallery_icon} alt="" />
-                    <input
-                      type="file"
-                      ref={galleryInputRef}
-                      onChange={handleFileSelect}
-                    />
+                    <input type="file" ref={galleryInputRef} onChange={handleFileSelect} />
                     <div className="gallery__btn--description">
-                      <p>
-                        ALLOW A.I <br />
-                        TO ACCESS GALLERY
-                      </p>
+                      <p>ALLOW A.I <br /> TO ACCESS GALLERY</p>
                       <img src={line} alt="" />
                     </div>
                   </button>
                 </div>
               </div>
+
+              {/* Preview Section */}
               <div className="preview">
                 <div className="preview__title">Preview</div>
                 <div className="preview__picture--box">
-                  <img
-                    src={preview || null}
-                    alt=""
-                    className="preview__picture--box-img"
-                  />
+                  <img src={preview || null} alt="" className="preview__picture--box-img" />
                 </div>
               </div>
             </>
           )}
         </div>
+
+        {/* Back Button */}
         <div className="intro__btns">
           <a href="/intro">
             <div className="back__btn">
@@ -177,6 +147,19 @@ function Analysis({
           </a>
         </div>
       </div>
+
+      {/* Camera overlay with rotating squares */}
+      {cameraLoading && (
+        <div className="camera__loading-wrapper">
+          <img src={camera_icon} alt="camera loading" className="camera__loading-icon" />
+          <div className="analysis__loading">
+                <img src={Big_Square} alt="big square" className="big__square--loading" />
+                <img src={Medium_Square} alt="medium square" className="medium__square--loading" />
+                <img src={Small_Square} alt="small square" className="small__square--loading" />
+              </div>  
+        </div>
+        
+      )}
     </>
   );
 }

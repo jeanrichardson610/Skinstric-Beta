@@ -345,3 +345,80 @@
   font-size: 14px;
 }
 }
+
+.camera__loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  animation: fadeInOut 0.7s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Fade out all page content when cameraLoading */
+.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Camera icon overlay */
+.camera__loading-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.camera__loading-icon {
+  width: 80px;
+  height: 80px;
+  animation: popFade 0.8s ease-in-out forwards;
+}
+
+@keyframes popFade {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Rotating squares around the camera icon */
+.rotating__big,
+.rotating__medium,
+.rotating__small {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center center;
+  width: 100px;
+  height: 100px;
+  margin: -50px; /* half of width/height to center */
+  animation: rotate 1s linear infinite;
+}
+
+.rotating__medium {
+  width: 70px;
+  height: 70px;
+  margin: -35px;
+  animation-duration: 1.2s;
+}
+
+.rotating__small {
+  width: 50px;
+  height: 50px;
+  margin: -25px;
+  animation-duration: 1.5s;
+}
+
+@keyframes rotate {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
