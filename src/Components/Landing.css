@@ -180,17 +180,18 @@
 }
 
 .left__triangle {
+  transform: none;
   transform: rotate(180deg);
   position: absolute;
   left: 18px;
-  top: 20px;
+  top: 18px;
   transition: all 200ms ease;
 }
 .right__triangle {
   transform: none;
   position: absolute;
   right: 18px;
-  top: 15px;
+  top: 18px;
   transition: all 200ms ease;
 }
 
