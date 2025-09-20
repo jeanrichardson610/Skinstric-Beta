@@ -3,6 +3,7 @@ import "./Camera.css";
 import Nav from "../Components/Nav";
 import Webcam from "react-webcam";
 import camera_icon from "../Assets/Group 40037.png";
+import { Link } from "react-router-dom";
 
 function Camera({ setPreview, preview, uploadImage }) {
   const webcamRef = useRef(null);
@@ -11,18 +12,18 @@ function Camera({ setPreview, preview, uploadImage }) {
   const [displayElem, setDisplayElem] = useState("");
   const [displayChoice, setDisplayChoice] = useState("none");
 
-  const capture = ( ) => {
+  const capture = () => {
     if (webcamRef.current) {
       const imgSrc = webcamRef.current.getScreenshot();
       setPreviewImg(imgSrc);
     }
   };
 
-   useEffect(() => {
-      if (!preview) return;
-  
-      uploadImage();
-    }, [preview, uploadImage]);
+  useEffect(() => {
+    if (!preview) return;
+
+    uploadImage();
+  }, [preview, uploadImage]);
 
   return (
     <>
@@ -82,13 +83,13 @@ function Camera({ setPreview, preview, uploadImage }) {
           </div>
         </div>
         <div className="capture__btns">
-          <a href="/analysis">
+          <Link to="/analysis">
             <div className="capture__back--btn">
               <div className="capture__back--btn-border"></div>
               <div className="capture__back--btn-triangle">▶{"\uFE0E"}</div>
               <div className="capture__back--btn-title">BACK</div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </>

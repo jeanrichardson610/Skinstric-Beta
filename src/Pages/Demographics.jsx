@@ -5,6 +5,7 @@ import radio_button from "../Assets/radio-button.png";
 import radio_button_black from "../Assets/radio-button (1).png";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { Link } from "react-router-dom";
 
 function Demographics({ demoData }) {
   const [selectedDemo, setSelectedDemo] = useState("race");
@@ -124,7 +125,7 @@ function Demographics({ demoData }) {
                 an analysis first.
               </p>
               <div className="demo__btns">
-                <a href="/results">
+                <Link to="/results">
                   <div className="back__btn--small">
                     <p>BACK</p>
                   </div>
@@ -133,12 +134,12 @@ function Demographics({ demoData }) {
                     <div className="back__btn--triangle">▶{"\uFE0E"}</div>
                     <div className="back__btn--title">BACK</div>
                   </div>
-                </a>
-                <a href="/" className="home__btn">
+                </Link>
+                <Link to="/" className="home__btn">
                   <div className="proceed__btn--title">HOME</div>
                   <div className="proceed__btn--border"></div>
                   <div className="proceed__btn--triangle">▶{"\uFE0E"}</div>
-                </a>
+                </Link>
               </div>
             </div>
           </div>
