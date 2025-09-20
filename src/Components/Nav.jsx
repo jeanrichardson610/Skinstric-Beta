@@ -17,7 +17,7 @@ function Nav() {
     introText = "INTRO";
   } else if (location.pathname === "/results") {
     introText = "ANALYSIS";
-  } else if (location.pathname === "/demographics") {
+  } else (location.pathname === "/demographics") {
     introText = "ANALYSIS"; // or whatever text you want
   }
 
