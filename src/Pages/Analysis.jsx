@@ -7,7 +7,7 @@ import Small_Square from "../Assets/Rectangle 2778.png";
 import camera_icon from "../Assets/camera-icon.png";
 import gallery_icon from "../Assets/gallery-icon.png";
 import line from "../Assets/Group 39690.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPreview }) {
   const [visible, setVisible] = useState("none");
@@ -78,7 +78,9 @@ function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPrevi
                   <button className="scan__btn" onClick={() => setVisible("block")}>
                     <img src={camera_icon} alt="camera icon" />
                     <div className="scan__btn--description">
-                      <p>ALLOW A.I. <br /> TO SCAN YOUR FACE</p>
+                      <p>
+                        ALLOW A.I. <br /> TO SCAN YOUR FACE
+                      </p>
                       <img src={line} alt="" />
                     </div>
                   </button>
@@ -86,7 +88,9 @@ function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPrevi
                   <div className="access__wrapper" style={{ display: visible }}>
                     <h2>ALLOW A.I. TO ACCESS YOUR CAMERA</h2>
                     <div className="access__buttons">
-                      <button className="deny" onClick={() => setVisible("none")}>DENY</button>
+                      <button className="deny" onClick={() => setVisible("none")}>
+                        DENY
+                      </button>
                       <button
                         className="allow"
                         onClick={() => {
@@ -118,7 +122,9 @@ function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPrevi
                     <img src={gallery_icon} alt="" />
                     <input type="file" ref={galleryInputRef} onChange={handleFileSelect} />
                     <div className="gallery__btn--description">
-                      <p>ALLOW A.I <br /> TO ACCESS GALLERY</p>
+                      <p>
+                        ALLOW A.I <br /> TO ACCESS GALLERY
+                      </p>
                       <img src={line} alt="" />
                     </div>
                   </button>
@@ -138,13 +144,13 @@ function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPrevi
 
         {/* Back Button */}
         <div className="intro__btns">
-          <a href="/intro">
+          <Link to="/intro">
             <div className="back__btn">
               <div className="back__btn--border"></div>
               <div className="back__btn--triangle">▶{"\uFE0E"}</div>
               <div className="back__btn--title">BACK</div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
 
@@ -153,12 +159,11 @@ function Analysis({ convertFileToBase64, loading, preview, uploadImage, setPrevi
         <div className="camera__loading-wrapper">
           <img src={camera_icon} alt="camera loading" className="camera__loading-icon" />
           <div className="analysis__loading">
-                <img src={Big_Square} alt="big square" className="big__square--loading" />
-                <img src={Medium_Square} alt="medium square" className="medium__square--loading" />
-                <img src={Small_Square} alt="small square" className="small__square--loading" />
-              </div>  
+            <img src={Big_Square} alt="big square" className="big__square--loading" />
+            <img src={Medium_Square} alt="medium square" className="medium__square--loading" />
+            <img src={Small_Square} alt="small square" className="small__square--loading" />
+          </div>
         </div>
-        
       )}
     </>
   );
