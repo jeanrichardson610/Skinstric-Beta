@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+Skinstric
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Skinstric is an interactive AI-powered facial analysis web app that allows users to upload or scan their faces to receive automated demographic predictions such as age and race. Built with React, it offers a smooth, intuitive experience with real-time image preview, permission prompts, and animated loading states.
 
-## Available Scripts
+🚀 Features
 
-In the project directory, you can run:
+AI Face Analysis – Upload or scan your face to let the AI predict demographic data.
 
-### `npm start`
+Camera and Gallery Access – Choose between capturing a live photo or selecting one from your device.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Instant Image Preview – See a preview of the uploaded image before analysis.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Animated Loading State – Displays a “Preparing your analysis…” animation while the AI processes the image.
 
-### `npm test`
+Responsive Navigation – Includes dynamic navigation behavior and route-based visibility for buttons.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Simple Back Navigation – Easy-to-use “Back” button to return to previous screens.
 
-### `npm run build`
+🧠 Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+React – UI framework
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React Router DOM – Page navigation and routing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Framer Motion (optional if used) – Smooth animations
 
-### `npm run eject`
+CSS3 / Flexbox – Layout and styling
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+JavaScript (ES6) – Logic and interactivity
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+📸 Core Components
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Analysis.jsx – Handles file upload, camera permissions, image preview, and loading animations.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Nav.jsx – Displays navigation bar with route-specific logic (e.g., hides “ENTER CODE” button on certain pages).
 
-## Learn More
+index.html – Contains the main app entry point and document title.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+⚙️ How It Works
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The user clicks “Allow A.I. to Scan Your Face” or “Allow A.I. to Access Gallery.”
 
-### Code Splitting
+If a photo is chosen, it’s converted to Base64 and displayed as a preview.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The app automatically uploads the image to trigger AI processing.
 
-### Analyzing the Bundle Size
+While waiting, an animated loading state appears.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Once complete, results such as demographics and predicted age are shown.
